@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
          echo "<br>";
 
+         $ch = curl_init();
 
          $bodyArr = [		
             'documentos' => [
@@ -55,12 +56,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 var_dump($bodyArr);
 
+//------ se debe probar con esta parte del cURL --------
+
+$token="Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlhN2ZhZGUyLTRhYTQtNGUxMS1hMmE2LTE5MDc3MzgyYzExMiIsInRpcG8iOiJzaXN0ZW1hIiwic2lzX2NvZGlnbyI6MTIsInNpZ2xhIjoiU0lHQVJFU1QiLCJkZXNjcmlwY2lvbiI6IlNJU1RFTUEgU0lHQSBSRVNUIiwibW9tZW50IjoiMjAyMC0wNy0wM1QxMToxMDowMS0wNDowMCIsImlhdCI6MTU5Mzc4OTAwMX0.e-ogRwi46h9LQb534mWCAzpTHHZtmrlXRc2G7easZ4PHA-iBCNHADi0uOJC3o_qssGiBfn54SZCHQf1S8dJ-MA";
+
+$body = json_encode($bodyArr);
+
+$url = 'http://172.16.80.32:7007/api/v1/archivo_digital/documento';
+
+$ch = curl_init($url) or die("Error");
+
+curl_setopt_array($ch, array(
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => $body,
+    CURLOPT_HTTPHEADER => array(
+        'Content-Type: application/json',
+        'Authorization:'.$token,
+        'Content-Description: File Transfer',
+        'Content-Length: ' . strlen($body)),                         
+    CURLOPT_RETURNTRANSFER => 1));
+   
+    $resultado = curl_exec($ch); 
+    $verifica = json_decode($resultado,true);
 
 
+    echo "se deberia mostrar aqui el cURL:    ";
 
 
+    echo "<br>";
+
+    var_dump($verifica);
 
 
+//------ se debe probar hasta aqui la parte del cURL --------
 
         }
     }
