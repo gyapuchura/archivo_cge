@@ -79,9 +79,7 @@ curl_setopt_array($ch, array(
     $resultado = curl_exec($ch); 
     $verifica = json_decode($resultado,true);
 
-
     echo "se deberia mostrar aqui el cURL:    ";
-
 
     echo "<br>";
 
