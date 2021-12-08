@@ -17,7 +17,9 @@
 <div>CODIGO DE MACRO:<input type="text" name="codigo_macro" id="codigo_macro"></div>
 <br>
 
-<div>MACROCURRICULA (DENOMINACION):<input type="text" name="macro" id="macro"></div>
+<div>MACROCURRICULA (DENOMINACION):
+    <textarea name="macro" id="macro" cols="50" rows="2"></textarea>
+</div>
 <br>
 
 <div>MODELO EDUCATIVO:<input type="text" name="mod_educ" id="mod_educ"></div>
