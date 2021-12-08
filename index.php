@@ -14,10 +14,13 @@
 <br>
 <form method="post" action="index4.php" enctype="multipart/form-data">
 
-<div>ID PROCESO:<input type="text" name="tematica" id="tematica"></div>
+<div>CODIGO DE MACRO:<input type="text" name="codigo_macro" id="codigo_macro"></div>
 <br>
 
-<div>TEMATICA: <input type="text" name="id_proceso" id="id_proceso"></div>
+<div>MACROCURRICULA (DENOMINACION):<input type="text" name="macro" id="macro"></div>
+<br>
+
+<div>MODELO EDUCATIVO:<input type="text" name="mod_educ" id="mod_educ"></div>
 <br>
 <br>
 
