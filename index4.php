@@ -1,4 +1,6 @@
 <?php
+include('inc.config.php');
+
 date_default_timezone_set('America/La_Paz');
 $fecha_ram				= date("Ymd");
 $fecha 					= date("Y-m-d");
@@ -54,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ];
 
 
-var_dump($bodyArr);
+
 
 //------ se debe probar con esta parte del cURL --------
 
@@ -86,7 +88,23 @@ curl_setopt_array($ch, array(
     var_dump($verifica);
 
 
-//------ se debe probar hasta aqui la parte del cURL --------
+//------ Se extrae los valores archivo_id y hash del array verifica --------//
+
+$hash_in    = $verifica ["datos"][0]["hash"];
+
+$archivo_id = $verifica ["datos"][0]["archivo_id"];
+
+$error_repite = $verifica ["datos"][0]["error_mensaje"];
+
+if ($error_repite == "") {
+
+$ins = $link->query("UPDATE macrocurricula SET archivo_id='$archivo_id', hash='$hash_in' WHERE idmacrocurricula='5'");
+
+    echo 'EL DOCUMENTO MACROCURRICULA FUE GUARDADO CORRECTAMENTE';
+} else {
+    echo 'ERROR AL SUBIR ';
+}
+
 
         }
     }

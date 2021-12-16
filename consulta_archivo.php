@@ -12,7 +12,7 @@
 <form action="obtiene_archivo.php" method="post">
 <div>
     <h3>Identificador del archivo</h3>
-    <input type="id_archivor" name="id_archivo">
+    <input type="id_archivo" name="id_archivo">
 </div>
 <br>
 <div>
